@@ -1,0 +1,1 @@
+export const GET_ALL_BIKES_ENDPOINT = "http://localhost/phprest/api/read.php";

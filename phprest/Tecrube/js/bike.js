@@ -1,32 +1,43 @@
-import { BIKES } from "./data.js";
-import { runFunctionsOnDOMContentLoaded } from "./helpers.js";
+// import { BIKES } from "./data.js";
+import {  getSingleBikeService} from "./services/bike-service.js";
 
 const bikeContainer = document.querySelector(".bike-detail-wrapper");
 
 //locateToIndividualBikePage
 const params = new URLSearchParams(window.location.search);
-const bikeTitle = params.get("title");
-const selectedBike = BIKES.find((bike) => bike.title === bikeTitle);
+const bikeID = params.get("id");
+// const selectedBike = BIKES.find((bike) => bike.title === bikeTitle);
+let selectedBike;
+
+const getSingleBike = async (id) =>{
+  try {
+    const data = await getSingleBikeService(id)
+    selectedBike = data
+  } catch (error) {
+    console.log(error);
+  }
+}
 //bind bike
 function bindBike(bike) {
   bikeContainer.innerHTML = "";
-  const imageBox = document.createElement("div");
-  imageBox.classList.add("bike-detail-image-box");
-  const image = document.createElement("img");
-  image.classList.add("bike-detail-photo");
-  image.src = bike.imagePath;
-  image.alt = bike.title;
-  imageBox.append(image);
+  const baseURL = "/Tecrube/assets/";
+   const imageBox = document.createElement("div");
+   imageBox.classList.add("bike-detail-image-box");
+   const image = document.createElement("img");
+   image.classList.add("bike-detail-photo");
+   image.src = `${baseURL}${bike.image}`;
+   image.alt = bike.image;
+   imageBox.append(image);
   const bikeDetailInfos = document.createElement("div");
   bikeDetailInfos.classList.add("bikeDetailInfos");
   const individualBikeDetails = document.createElement("div");
   individualBikeDetails.classList.add("individualBikeDetails");
   const h3 = document.createElement("h3");
   h3.classList.add("bike-detail-title");
-  h3.textContent = bike.title;
+  h3.textContent = bike.name;
   const p = document.createElement("p");
   p.classList.add("bike-detail-desc");
-  p.textContent = bike.description;
+  p.textContent = bike.comment;
   const span = document.createElement("span");
   span.classList.add("bike-detail-price");
   span.textContent = `${bike.price}AZN`;
@@ -46,11 +57,11 @@ function bindBike(bike) {
   addFavouriteButton.append(favIcon);
   //appends
   basketFavouriteButtons.append(addBasketButton, addFavouriteButton);
-  individualBikeDetails.append(h3, p, span);
+  individualBikeDetails.append(imageBox,h3, p, span);
   bikeDetailInfos.append(individualBikeDetails, basketFavouriteButtons);
-  bikeContainer.append(imageBox, bikeDetailInfos);
+  bikeContainer.append( bikeDetailInfos);
 }
-runFunctionsOnDOMContentLoaded([()=>bindBike(selectedBike)])
+
 // Function to add product to basket
 function addToBasket(product) {
   let basketArray = JSON.parse(localStorage.getItem('basketArray')) || [];
@@ -63,3 +74,8 @@ function addToBasket(product) {
   }
   localStorage.setItem('basketArray', JSON.stringify(basketArray));
 }
+async function initialRenderFunctions () {
+  await getSingleBike(bikeID)
+bindBike(selectedBike)
+}
+window.addEventListener("DOMContentLoaded",initialRenderFunctions)

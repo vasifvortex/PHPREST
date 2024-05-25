@@ -174,23 +174,13 @@ main {
 }
 
 .slide {
-  position: relative;
-}
-
-.slide {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: var(--main-transition);
-  transition-delay: 200ms;
 }
 
 .slide .slider-bg {
   display: block;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   object-fit: cover;
   object-position: center;
@@ -222,32 +212,25 @@ main {
   color: var(--text-color);
 }
 
-.slide[data-active] {
-  opacity: 1;
-  z-index: 1;
-  transition-delay: 0ms;
-}
-
 .carousel-button {
   position: absolute;
   z-index: 2;
   background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 2rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--bg-color);
   cursor: pointer;
   border-radius: 0.25rem;
   padding: 0 0.5rem;
-  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.carousel-button.prev {
+.carousel-button-prev {
   left: 1rem;
 }
 
-.carousel-button.next {
+.carousel-button-next {
   right: 1rem;
 }
 
@@ -895,3 +878,4 @@ footer input[type="submit"]:hover {
   display: block;
   font-size: 30px;
 }
+

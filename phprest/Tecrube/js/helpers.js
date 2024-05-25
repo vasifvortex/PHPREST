@@ -7,11 +7,4 @@ export function debounce(func, timeout = 300) {
     }, timeout);
   };
 }
-export function runFunctionsOnDOMContentLoaded(functionsArray) {
-  function runFunctions() {
-    for (let func of functionsArray) {
-      func(); // Call each function directly
-    }
-  }
-  window.addEventListener("DOMContentLoaded",runFunctions)
-}
+

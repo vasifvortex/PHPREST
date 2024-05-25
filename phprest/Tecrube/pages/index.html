@@ -11,6 +11,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
@@ -39,15 +41,9 @@
       <i class="fa-solid fa-xmark burger-menu-closer"></i>
     </div>
     <main>
-      <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev">
-          <i class="fa-solid fa-left-long"></i>
-        </button>
-        <button class="carousel-button next" data-carousel-button="next">
-          <i class="fa-solid fa-right-long"></i>
-        </button>
-        <ul data-slides>
-          <li class="slide" data-active>
+      <div class="swiper carousel">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide">
             <img
               class="slider-bg"
               src="../assets/bike-slide-1.jpg"
@@ -63,8 +59,8 @@
                 accusamus eaque?
               </p>
             </div>
-          </li>
-          <li class="slide">
+          </div>
+          <div class="swiper-slide slide ">
             <img
               class="slider-bg"
               src="../assets/bike-slide-2.jpg"
@@ -80,8 +76,8 @@
                 accusamus eaque?
               </p>
             </div>
-          </li>
-          <li class="slide">
+          </div>
+          <div class="swiper-slide slide ">
             <img
               class="slider-bg"
               src="../assets/bike-slide-3.jpg"
@@ -97,8 +93,18 @@
                 accusamus eaque?
               </p>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+    
+          <button class="carousel-button-prev carousel-button" >
+            <i class="fa-solid fa-left-long"></i>
+          </button>
+
+
+          <button class="carousel-button-next carousel-button" >
+            <i class="fa-solid fa-right-long"></i>
+          </button>
+
       </div>
       <div class="container">
         <div class="boxes">
@@ -216,7 +222,8 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../js/common.js"></script>
-    <script src="../js/index.js"></script>
+    <script type="module" src="../js/index.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-//! Imports
+//! Imports html
 // import { BIKES } from "./data.js";
 import { debounce } from "./helpers.js";
 import {  getAllBikesService} from "./services/bike-service.js";

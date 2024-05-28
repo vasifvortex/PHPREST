@@ -96,11 +96,11 @@ else{
           <div class="swiper-slide slide">
             <img
               class="slider-bg"
-              src="../Tecrube/assets/bike-slide-1.jpg"
+              src="../assets/bike-slide-1.jpg"
               alt="Nature Image #1"
             />
             <div class="slider-details">
-              <img src="../Tecrube/assets/logo.png" alt="" />
+              <img src="../assets/logo.png" alt="" />
               <h4>Rent2Ride</h4>
               <h3>Ride to your happiness !</h3>
               <p>
